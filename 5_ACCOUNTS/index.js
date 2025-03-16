@@ -5,7 +5,6 @@ const chalk = require('chalk')
 // modulos internos 
 
 const fs = require ('fs')
-const { error } = require('console')
 
 operation()
 
