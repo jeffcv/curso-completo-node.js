@@ -1,0 +1,10 @@
+<h1>Bem vindo à {{title}}!</h1>
+<p>Explore os melhores jogos aqui!</p>
+
+<ul>
+    {{#each segments}}
+    <li>
+        <a href="{{this.path}}">{{this.name}}</a>
+    </li>
+    {{/each}}
+</ul>

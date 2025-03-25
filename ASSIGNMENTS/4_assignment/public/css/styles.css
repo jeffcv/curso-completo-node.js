@@ -1,0 +1,23 @@
+.microsoft {
+    color: green;
+}
+
+.nintendo {
+    color: red;
+}
+
+.sony {
+    color: blue;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.btn_voltar{
+    text-align: center;
+}
