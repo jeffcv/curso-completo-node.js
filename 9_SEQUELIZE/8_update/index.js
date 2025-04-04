@@ -104,7 +104,8 @@ app.get('/users/:id', async (req, res) => {
 })
 
 conn
-.sync()
+.sync() 
+//.sync({ force: true }) -> força a recriação da tabela
 .then(() => {
     app.listen(3000)
 })
