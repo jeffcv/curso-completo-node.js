@@ -24,7 +24,7 @@ module.exports = class TaskController {
 
         const id = req.body.id
 
-        await Task.destroy({where: {id: id}})
+        await Task.destroy({where: { id: id }})
 
         res.redirect('/tasks')
 
