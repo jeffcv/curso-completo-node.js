@@ -17,7 +17,7 @@ const User = require('./models/User')
 const thoughtsRoutes = require('./routes/thoughtsRoutes');
 
 // Import Controller
-const ThoughtController = require('./controllers/thoughtController')
+const ThoughtController = require('./controllers/ThoughtController.js')
 
 // template engine
 app.engine("handlebars", hbs.engine);
