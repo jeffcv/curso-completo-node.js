@@ -52,7 +52,7 @@ app.use(express.static('public'))
 // se session to res
 app.use((req, res, next) =>{
 
-    if(req.secure.userid) {
+    if(req.session.userid) {
         res.locals.session = req.session
     }
 
@@ -63,6 +63,6 @@ app.use((req, res, next) =>{
 conn
   .sync()
   .then(() => {
-    app.listem(3000);
+    app.listen(3000);
   })
   .catch((err) => console.log(err));
