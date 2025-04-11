@@ -7,12 +7,17 @@ const hbs = exphbs.create({});
 
 const app = express();
 
-const conn = require("./db/conn");
+const conn = require('./db/conn');
 
 // Models
 const Thought = require('./models/Thought')
 const User = require('./models/User')
 
+// Import Routes
+const thoughtsRoutes = require('./routes/thoughtsRoutes');
+
+// Import Controller
+const ThoughtController = require('./controllers/thoughtController')
 
 // template engine
 app.engine("handlebars", hbs.engine);
@@ -54,16 +59,19 @@ app.use(flash())
 app.use(express.static('public'))
 
 
-// se session to res
+// session to res
 app.use((req, res, next) =>{
 
     if(req.session.userid) {
         res.locals.session = req.session
     }
 
-    next()
-    
+    next()    
 })
+
+app.use('/thoughts', thoughtsRoutes)
+
+app.get('/', ThoughtController.showThoughts)
 
 conn
  // .sync({ force: true })
