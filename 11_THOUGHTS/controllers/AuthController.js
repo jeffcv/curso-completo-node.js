@@ -43,8 +43,6 @@ module.exports = class AuthController {
 
   }
 
-
-
   static register(req, res) {
     res.render("auth/register");
   }

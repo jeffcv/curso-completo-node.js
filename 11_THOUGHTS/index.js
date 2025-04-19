@@ -78,7 +78,7 @@ app.get('/', ThoughtController.showThoughts)
 
 conn
  .sync({ force: true })
-  //.sync()
+ // .sync()
   .then(() => {
     app.listen(3000);
   })
