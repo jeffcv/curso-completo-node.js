@@ -51,7 +51,6 @@ module.exports = class ThoughtController {
             })
         } catch (error) {
             console.log('Aconteceu um erro ' + error)
-        }
-        
+        }       
     }
 }
