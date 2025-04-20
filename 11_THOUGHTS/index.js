@@ -56,6 +56,12 @@ app.use(
 // flash messages
 app.use(flash())
 
+app.use((req, res, next) => {
+  res.locals.message = req.flash('message')
+  next()
+})
+
+
 // public path
 app.use(express.static('public'))
 

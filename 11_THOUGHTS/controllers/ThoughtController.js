@@ -16,10 +16,10 @@ module.exports = class ThoughtController {
             include: Thought,
             plain: true
         })
-        
+
         // check if user exists
-        if(!user) {
-           return res.redirect('/login')
+        if (!user) {
+            return res.redirect('/login')
         }
 
         const thoughts = user.Thoughts.map((result) => result.dataValues)
@@ -41,7 +41,7 @@ module.exports = class ThoughtController {
         }
 
         try {
-            
+
             await Thought.create(thought)
 
             req.flash('message', 'Pensamento criado com sucesso!')
@@ -51,6 +51,25 @@ module.exports = class ThoughtController {
             })
         } catch (error) {
             console.log('Aconteceu um erro ' + error)
-        }       
+        }
+    }
+
+    static async removeThought(req, res) {
+
+        const id = req.body.id
+        const UserId = req.session.userid
+
+        try {
+            await Thought.destroy({ where: { id: id, UserId: UserId } })
+
+            req.flash('message', 'Pensamento removido com sucesso!')
+
+            req.session.save(() => {
+                res.redirect('/thoughts/dashboard')
+            }) 
+
+        } catch (error) {
+            console.log('Aconteceu um erro: ' + error)
+        }
     }
 }
