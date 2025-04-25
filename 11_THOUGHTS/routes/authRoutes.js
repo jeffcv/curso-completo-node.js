@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const AuthController = require('../controllers/AuthController')
+const { checkAuth } = require('../helpers/auth')
+const ThoughtController = require('../controllers/ThoughtController')
 
 router.get('/login', AuthController.login)
 router.post('/login', AuthController.loginPost)
