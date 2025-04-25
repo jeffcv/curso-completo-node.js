@@ -83,9 +83,9 @@ app.use('/', authRoutes)
 app.get('/', ThoughtController.showThoughts)
 
 conn
- //.sync({ force: true })
+ .sync({ force: true })
  //.sync()
- .sync({ alter: true })
+ //.sync({ alter: true })
   .then(() => {
     app.listen(3000);
   })
