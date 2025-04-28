@@ -1,3 +1,4 @@
+const { where } = require('sequelize')
 const Thought = require('../models/Thought')
 const User = require('../models/User')
 
@@ -86,5 +87,28 @@ module.exports = class ThoughtController {
         const thought = await Thought.findOne({where: { id: id }, raw: true})
 
         res.render('thoughts/edit', { thought })
+    }
+
+    static async updateThoughtSave(req, res) {
+
+        const id = req.body.id
+
+        const thought = {
+            title: req.body.title
+        }
+
+        try {
+
+            await Thought.update(thought, { where: { id: id }} )
+
+             req.flash('message', 'Pensamento atualizado com sucesso!')
+
+            req.session.save(() => {
+                res.redirect('/thoughts/dashboard')
+            }) 
+ 
+        } catch (error) {
+            console.log('Aconteceu um erro: ' + error)
+        }
     }
 }
